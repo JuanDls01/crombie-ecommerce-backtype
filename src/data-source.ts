@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { User, Category, Project } from "./entities";
+import { User, Category, Project, Score } from "./entities";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -9,10 +9,10 @@ export const AppDataSource = new DataSource({
   username: "postgres", // usuario de postgres, es postgres por defecto
   password: "1234", // password de postgres
   database: "ecommerce-db", // database name
-  synchronize: false,
+  synchronize: true,
   logging: false,
   entities: [User, Category, Project],
-  migrations: ["src/migrations/**/*{.ts,.js}"],
+  migrations: ["src/migration/*{.ts,.js}"],
   migrationsTableName: "custom_migration_table",
   subscribers: [],
 });

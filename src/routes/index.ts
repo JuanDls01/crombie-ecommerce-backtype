@@ -1,7 +1,8 @@
-import { Router } from 'express';
+import { Router } from "express";
+import projectRoute from "./projects";
 
 const mainRouter = Router();
 
-mainRouter.use('/product', (req, res) => res.status(200).json("Hello world"));
+mainRouter.use("/project", projectRoute);
 
 export default mainRouter;

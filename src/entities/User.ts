@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+} from "typeorm";
+import { Project } from "./Project";
+import { Score } from "./Score";
 
 @Entity()
 export class User {
@@ -23,6 +33,20 @@ export class User {
 
   //   @Column()
   //   profilePicture: string;
+
+  @ManyToMany(() => Project)
+  @JoinTable({
+    name: "score",
+    // joinColumn: {
+    //   name: "user",
+    //   referencedColumnName: "id",
+    // },
+    // inverseJoinColumn: {
+    //   name: "category",
+    //   referencedColumnName: "id",
+    // },
+  })
+  projects: Project[];
 
   @Column()
   isAdmin: boolean;

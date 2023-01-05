@@ -1,6 +1,11 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Category } from "./Category";
-
 @Entity()
 export class Project {
   @PrimaryGeneratedColumn()
