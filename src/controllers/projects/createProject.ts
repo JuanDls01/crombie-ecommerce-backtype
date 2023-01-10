@@ -9,7 +9,7 @@ const createProject = async (req: Request, res: Response) => {
     category?: number;
     projectEmail?: string;
   };
-
+  console.log(req.body);
   try {
     if (!name || !description || !category || !projectEmail)
       throw new Error("Please complete all the fields");
