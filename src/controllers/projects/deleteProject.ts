@@ -13,7 +13,7 @@ const deleteProject = async (req: Request, res: Response) => {
     if (!projectToDelete) {
       throw new Error("The Poject has already been deleted");
     } else {
-      const results = await AppDataSource.getRepository(Project).delete(id);
+      await AppDataSource.getRepository(Project).delete(id);
       return res.status(200).json(projectToDelete);
     }
   } catch (err) {
