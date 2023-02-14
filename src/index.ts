@@ -24,8 +24,8 @@ app.use("/", mainRouter);
 
 AppDataSource.initialize()
   .then(async () => {
-    app.listen(3000, () => {
-      return console.log(`Server running on ${3000}`);
+    app.listen(8000, () => {
+      return console.log(`Server running on ${8000}`);
     });
   })
   .catch((error) => console.log(error));
