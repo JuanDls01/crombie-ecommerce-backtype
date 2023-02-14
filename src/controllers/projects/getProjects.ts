@@ -3,28 +3,25 @@ import { Project } from "../../entities";
 import { AppDataSource } from "../../data-source";
 
 const getProjects = async (req: Request, res: Response) => {
-  const pageSize: number = req.query.pageSize ? Number(req.query.pageSize) : 5;
+  const pageSize: number = req.query.pageSize ? Number(req.query.pageSize) : 2;
   const currentPage: number = req.query.currentPage
     ? Number(req.query.currentPage)
     : 1;
   const offset: number = currentPage * pageSize - pageSize;
   try {
-    console.log(offset);
     const totalProjects = await AppDataSource.getRepository(Project)
       .createQueryBuilder("project")
       .getCount();
+    console.log(offset, pageSize);
 
     const projectCategory = await AppDataSource.getRepository(Project)
       .createQueryBuilder("project")
-      .limit(offset + pageSize)
       .offset(offset)
+      .limit(pageSize)
       .leftJoinAndSelect("project.category", "category")
       .getMany();
 
-    console.log(totalProjects);
-
     if (projectCategory.length > 0) {
-      const projectQuantity = projectCategory.length;
       return res
         .status(200)
         .json({ data: projectCategory, totalItems: totalProjects });
