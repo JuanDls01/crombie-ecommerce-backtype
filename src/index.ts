@@ -8,10 +8,10 @@ import "reflect-metadata";
 
 const app = express();
 
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
 
 const corsOptions = {
-  origin: allowedOrigins,
+  origin: "*",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -22,10 +22,18 @@ app.use(bodyParser.json());
 
 app.use("/", mainRouter);
 
-AppDataSource.initialize()
-  .then(async () => {
-    app.listen(8000, () => {
-      return console.log(`Server running on ${8000}`);
-    });
-  })
-  .catch((error) => console.log(error));
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(8000, () => {
+  return console.log(`Server running on ${8000}`);
+});
+
+// AppDataSource.initialize()
+//   .then(async () => {
+//     app.listen(8000, () => {
+//       return console.log(`Server running on ${8000}`);
+//     });
+//   })
+//   .catch((error) => console.log(error));
