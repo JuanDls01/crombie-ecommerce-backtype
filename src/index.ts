@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(8000, () => {
+app.listen(3000, () => {
   return console.log(`Server running on ${8000}`);
 });
 
