@@ -6,5 +6,6 @@ const mainRouter = Router();
 
 mainRouter.use("/project", projectRoute);
 mainRouter.use("/category", categoryRoute);
+mainRouter.use("/auth");
 
 export default mainRouter;

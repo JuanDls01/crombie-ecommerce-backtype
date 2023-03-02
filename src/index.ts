@@ -1,10 +1,8 @@
-import { AppDataSource } from "./data-source";
-
-import express from "express";
-import cors from "cors";
 import bodyParser from "body-parser";
-import mainRouter from "./routes";
+import cors from "cors";
+import express from "express";
 import "reflect-metadata";
+import mainRouter from "./routes";
 
 const app = express();
 
