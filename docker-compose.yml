@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  db:
+    container_name: "ecommerce-db"
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - datision-db:/var/lib/postgresql/data
+
+  node_backend:
+    container_name: "node_backend"
+    build: .
+    ports:
+      - "3001:3001"
+
+volumes:
+  datision-db:
+    name: datision-db
+    driver: local
