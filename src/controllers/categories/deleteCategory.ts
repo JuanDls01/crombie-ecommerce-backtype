@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../data-source";
-import { Category, Project } from "../../entities";
+import { Category } from "../../entities";
 
 const deleteCategory = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string };

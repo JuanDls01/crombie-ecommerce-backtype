@@ -21,7 +21,7 @@ const createCategory = async (req: Request, res: Response) => {
         "The name of the category already exists, please change it"
       );
     }
-    const categoryCreated = await AppDataSource.getRepository(Category).create(
+    const categoryCreated = AppDataSource.getRepository(Category).create(
       req.body
     );
 
