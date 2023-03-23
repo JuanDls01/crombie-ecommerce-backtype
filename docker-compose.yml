@@ -6,7 +6,8 @@ services:
     restart: always
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ecommerce-db
     ports:
       - "5432:5432"
     volumes:
@@ -17,6 +18,13 @@ services:
     build: .
     ports:
       - "3001:3001"
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=ecommerce-db
+      - DB_HOST=localhost
+    depends_on:
+      - db
 
 volumes:
   datision-db:

@@ -4,11 +4,11 @@ import { User, Category, Project, Score } from "./entities";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  username: process.env.DB_USER, // usuario de postgres, es postgres por defecto
-  password: process.env.DB_PASSWORD, // password de postgres
-  database: process.env.DB_NAME, // database name
+  host: "ecommerce-db.cbdusjiaiu1j.us-east-1.rds.amazonaws.com",
+  port: 5432,
+  username: "postgres", // usuario de postgres, es postgres por defecto
+  password: "crombiepassword", // password de postgres
+  database: "ecommerce-db", // database name
   synchronize: true,
   logging: false,
   entities: [User, Category, Project],
